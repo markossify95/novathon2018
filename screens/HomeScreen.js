@@ -1,11 +1,11 @@
 import React from 'react';
 import {
-  Platform,
   StyleSheet,
   View,
   Button,
   BackHandler,
   Text,
+  ActivityIndicator,
 } from 'react-native';
 import { Constants } from 'expo';
 
@@ -21,6 +21,8 @@ export default class HomeScreen extends React.Component {
   state = {
     scannerActive: false,
     titleText: 'Balance for this Week/Month: \n\t\t72.8 / 100',
+    isPaying: false,
+    data: null
   };
 
   _toggleScannerActive = () => {
@@ -32,6 +34,9 @@ export default class HomeScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
+        {this.state.isPaying === true ?
+          (<ActivityIndicator size="large" color="#0000ff" />) : null
+        }
         {this.state.scannerActive === true ? (
           <View style={{ position: 'relative' }}>
             <View
@@ -43,7 +48,10 @@ export default class HomeScreen extends React.Component {
                 height: Layout.window.height,
               }}
             >
-              <QrScanner />
+              <QrScanner
+                cancelMethod={this.handleBackPress}
+                processPaymentMethod={this.processPayment}
+              />
             </View>
             <Icon.Ionicons
               name="md-close"
@@ -53,19 +61,19 @@ export default class HomeScreen extends React.Component {
             />
           </View>
         ) : (
-          <View>
-            <Text>
-              {'\n'}
-              {'\n'}
-              {'\n\t\t'}
-              {this.state.titleText}
-              {'\n'}
-            </Text>
-            <View style={styles.ScanButton}>
-              <Button onPress={this._toggleScannerActive} title="Scan to pay" />
+            <View>
+              <Text>
+                {'\n'}
+                {'\n'}
+                {'\n\t\t'}
+                {this.state.titleText}
+                {'\n'}
+              </Text>
+              <View style={styles.ScanButton}>
+                <Button onPress={this._toggleScannerActive} title="Scan to pay" />
+              </View>
             </View>
-          </View>
-        )}
+          )}
       </View>
     );
   }
@@ -81,9 +89,35 @@ export default class HomeScreen extends React.Component {
   handleBackPress = () => {
     if (this.state.scannerActive) {
       this._toggleScannerActive();
+      return true;
+    } else {
+      BackHandler.exitApp();
     }
-    return true;
   };
+
+  _stopPaying = () => {
+    this.setState(
+      () => {
+        return {
+          isPaying: false
+        };
+      }
+    );
+
+    alert(`Payment successful: \n ${this.state.data.data}`);
+  }
+
+  processPayment = (x) => {
+    this.setState(
+      () => {
+        return {
+          isPaying: true,
+          data: x
+        };
+      }
+    );
+    setTimeout(this._stopPaying, Math.floor(Math.max(1500, Math.random() * 3500)));
+  }
 }
 
 const styles = StyleSheet.create({

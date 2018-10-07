@@ -128,12 +128,14 @@ StatsStack.navigationOptions = {
 
 export default createBottomTabNavigator({
   // PARENT
-  BudgetStack,
-  TransactionStack,
-  StatsStack,
-  // CHILDREN
-  // HomeStack,
-  // PaymentStack,
-  // GoalsStack,
+  
   // BudgetStack,
+  // TransactionStack,
+  // StatsStack,
+  
+  // CHILDREN
+  HomeStack,
+  PaymentStack,
+  GoalsStack,
+  BudgetStack,
 });
