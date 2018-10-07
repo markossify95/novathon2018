@@ -7,6 +7,7 @@ import {
   BackHandler,
   Text,
 } from 'react-native';
+import { Constants } from 'expo';
 
 import { QrScanner } from '../components/QrScanner';
 import Icon from 'expo/src/Icon';
@@ -14,7 +15,7 @@ import Layout from '../constants/Layout';
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
-    header: null,
+    headerStyle: { marginTop: Constants.statusBarHeight },
   };
 
   state = {
@@ -33,8 +34,15 @@ export default class HomeScreen extends React.Component {
       <View style={styles.container}>
         {this.state.scannerActive === true ? (
           <View style={{ position: 'relative' }}>
-            
-            <View style={{ position: 'absolute', top: 0, left: 0, width:Layout.window.width, height: Layout.window.height  }}>
+            <View
+              style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: Layout.window.width,
+                height: Layout.window.height,
+              }}
+            >
               <QrScanner />
             </View>
             <Icon.Ionicons

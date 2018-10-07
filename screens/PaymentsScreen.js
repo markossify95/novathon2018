@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { View, ScrollView, Text, StyleSheet } from 'react-native';
 
+import { Constants } from 'expo';
+
 const categories = [
   { text: 'all' },
   { text: 'pornici' },
@@ -28,6 +30,9 @@ const mockData = [
 const MARGIN_BOTTOM = 20;
 
 class PaymentsScreen extends Component {
+  static navigationOptions = {
+    headerStyle: { marginTop: Constants.statusBarHeight },
+  };
   render() {
     return (
       <View style={{ backgroundColor: '#fff', paddingTop: 10 }}>

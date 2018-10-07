@@ -6,6 +6,7 @@ import {
   ProgressBarAndroid,
   StyleSheet,
 } from 'react-native';
+import { Constants } from 'expo';
 
 const mockData = [
   { title: '1Nove Gilje', collected: 40, goalAmount: 50 },
@@ -24,6 +25,9 @@ const mockData = [
 const MARGIN_BOTTOM = 20;
 
 export default class GoalsScreen extends Component {
+  static navigationOptions = {
+    headerStyle: { marginTop: Constants.statusBarHeight },
+  };
   render() {
     return (
       <ScrollView style={{ paddingTop: 20, backgroundColor: '#fff' }}>
