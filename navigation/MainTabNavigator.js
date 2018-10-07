@@ -161,8 +161,6 @@ export default createBottomTabNavigator(
     HomeStack,
     PaymentStack,
     GoalsStack,
-    BudgetStack,
-    TransactionStack,
   },
   opts,
 );
