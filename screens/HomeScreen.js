@@ -38,7 +38,31 @@ export default class HomeScreen extends React.Component {
         source={require('../assets/images/photo_2018-10-07_09-33-42.jpg')}
         style={styles.container}
       >
-        {this.state.isPaying === true ? (
+        {this.state.paid ? (
+          <View>
+            <Text style={{ color: '#fff', fontSize: 20, textAlign: 'center' }}>
+              Balance for this Week/Month:
+            </Text>
+            <Text
+              style={{
+                color: '#fff',
+                fontSize: 20,
+                textAlign: 'center',
+                marginBottom: 40,
+              }}
+            >
+              72.8 / 100
+            </Text>
+            <Text style={{ fontSize: 50, textAlign: 'center', color: '#fff' }}>
+              Successful payment!
+            </Text>
+            {/* <Image
+              width={400}
+              height={400}
+              source={require('../assets/images/photo_2018-10-07_10-43-22.jpg')}
+            /> */}
+          </View>
+        ) : this.state.isPaying === true ? (
           <ActivityIndicator size="large" color="#0000ff" />
         ) : null}
         {this.state.scannerActive && !this.state.isPaying ? (
@@ -46,7 +70,7 @@ export default class HomeScreen extends React.Component {
             <View
               style={{
                 position: 'absolute',
-                top: 0,
+                top: -50,
                 left: 0,
                 width: Layout.window.width,
                 height: Layout.window.height,
@@ -59,21 +83,12 @@ export default class HomeScreen extends React.Component {
             </View>
             <Icon.Ionicons
               name="md-close"
-              style={{ position: 'absolute', top: 0, left: 0 }}
+              style={{ position: 'absolute', top: -50, left: 0 }}
               onPress={this._toggleScannerActive}
               size={40}
             />
           </View>
-        ) : this.state.scannerActive && this.state.isPaying ? (
-          <View>
-            <Text style={{ color: '#fff', fontSize: 20, textAlign: 'center' }}>
-              Balance for this Week/Month:
-            </Text>
-            <Text style={{ color: '#fff', fontSize: 20, textAlign: 'center' }}>
-              72.8 / 100
-            </Text>
-          </View>
-        ) : (
+        ) : this.state.paid ? null : (
           <View>
             <Text style={{ color: '#fff', fontSize: 20, textAlign: 'center' }}>
               Balance for this Week/Month:
@@ -111,10 +126,11 @@ export default class HomeScreen extends React.Component {
     this.setState(() => {
       return {
         isPaying: false,
+        paid: true,
       };
     });
 
-    alert(`Payment successful: \n ${this.state.data.data}`);
+    // alert(`Payment successful: \n ${this.state.data.data}`);
   };
 
   processPayment = x => {

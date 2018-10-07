@@ -99,7 +99,7 @@ BudgetStack.navigationOptions = {
       name={
         Platform.OS === 'ios'
           ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-person'
+          : 'ios-briefcase'
       }
     />
   ),
