@@ -87,7 +87,7 @@ BudgetStack.navigationOptions = {
 
 export default createBottomTabNavigator({
   HomeStack,
-  GoalsStack,
   PaymentStack,
+  GoalsStack,
   BudgetStack,
 });
