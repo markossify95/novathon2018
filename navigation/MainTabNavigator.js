@@ -152,11 +152,11 @@ const opts = {
 export default createBottomTabNavigator(
   {
     // PARENT
-    BudgetStack,
-    TransactionStack,
+    // BudgetStack,
+    // TransactionStack,
     StatsStack,
 
-    SettingsStack,
+    // SettingsStack,
 
     // CHILDREN
     HomeStack,

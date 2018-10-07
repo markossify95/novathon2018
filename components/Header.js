@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { View, Text, Picker } from 'react-native';
 
-const childs = [{ name: 'jelena' }, { name: 'jovana' }];
+const childs = [{ name: 'Jelena' }, { name: 'Dejan' }];
 
 class Header extends Component {
   state = {
-    selected: 'jelena',
+    selected: 'Jelena',
   };
 
   render() {

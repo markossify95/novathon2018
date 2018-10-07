@@ -9,18 +9,14 @@ import {
 import { Constants } from 'expo';
 
 const mockData = [
-  { title: '1Nove Gilje', collected: 40, goalAmount: 50 },
-  { title: '2Vibratorrr', collected: 1, goalAmount: 5 },
-  { title: 'S3Ony', collected: 4, goalAmount: 12 },
-  { title: 'N4ove Gilje', collected: 40, goalAmount: 50 },
-  { title: 'SO5ny', collected: 4, goalAmount: 12 },
-  { title: 'Vib6ratorrr', collected: 1, goalAmount: 5 },
-  { title: 'Nove7 Gilje', collected: 40, goalAmount: 50 },
-  { title: 'Vibra8torrr', collected: 1, goalAmount: 5 },
-  { title: 'SOn9y', collected: 4, goalAmount: 12 },
-  { title: 'Nov3e0 Gilje', collected: 40, goalAmount: 50 },
-  { title: 'SOn4y', collected: 4, goalAmount: 12 },
-  { title: 'Vibr5atorrr', collected: 1, goalAmount: 5 },
+  { title: 'Sneakers', collected: 30, goalAmount: 50 },
+  { title: 'Play Station 4 Pro', collected: 2, goalAmount: 500 },
+  { title: 'FIFA 2019', collected: 4, goalAmount: 30 },
+  { title: 'Harry Potter books', collected: 10, goalAmount: 25 },
+  { title: 'Labrador cub', collected: 180, goalAmount: 200 },
+  { title: 'Smart Watch', collected: 155, goalAmount: 370 },
+  { title: 'Apple Macbook', collected: 375, goalAmount: 800 },
+  
 ];
 const MARGIN_BOTTOM = 20;
 
@@ -40,7 +36,7 @@ export default class GoalsScreen extends Component {
               progress={collected / goalAmount}
               styleAttr="Horizontal"
               indeterminate={false}
-              color="#00ee00"
+              color="#497eab"
             />
           </View>
         ))}
