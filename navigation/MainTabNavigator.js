@@ -45,7 +45,7 @@ SettingsStack.navigationOptions = {
       name={
         Platform.OS === 'ios'
           ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-home'
+          : 'md-settings'
       }
     />
   ),
@@ -63,7 +63,7 @@ GoalsStack.navigationOptions = {
       name={
         Platform.OS === 'ios'
           ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'
+          : 'ios-briefcase'
       }
     />
   ),
@@ -81,7 +81,7 @@ PaymentStack.navigationOptions = {
       name={
         Platform.OS === 'ios'
           ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-bank-transfer'
+          : 'md-swap'
       }
     />
   ),
@@ -99,7 +99,7 @@ BudgetStack.navigationOptions = {
       name={
         Platform.OS === 'ios'
           ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'
+          : 'md-person'
       }
     />
   ),

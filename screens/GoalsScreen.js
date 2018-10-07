@@ -16,11 +16,13 @@ const mockData = [
   { title: 'Labrador cub', collected: 180, goalAmount: 200 },
   { title: 'Smart Watch', collected: 155, goalAmount: 370 },
   { title: 'Apple Macbook', collected: 375, goalAmount: 800 },
-  
 ];
 const MARGIN_BOTTOM = 20;
 
 export default class GoalsScreen extends Component {
+  static navigationOptions = {
+    header: null,
+  };
   render() {
     return (
       <ScrollView style={{ paddingTop: 20, backgroundColor: '#fff' }}>

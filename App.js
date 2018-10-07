@@ -35,7 +35,7 @@ export default class App extends React.Component {
       return (
         // <View style={{ marginTop: 30 }}>
         <ImageBackground
-          source={require('./assets/images/photo_2018-10-07_09-16-24.jpg')}
+          source={require('./assets/images/photo_2018-10-07_09-33-42.jpg')}
           style={styles.container}
         >
           {/* <StatusBar animated barStyle="light-content" /> */}
@@ -80,5 +80,6 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     height: '100%',
+    paddingTop: 30,
   },
 });
