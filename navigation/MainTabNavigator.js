@@ -81,7 +81,7 @@ PaymentStack.navigationOptions = {
       name={
         Platform.OS === 'ios'
           ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'
+          : 'md-bank-transfer'
       }
     />
   ),
@@ -138,7 +138,7 @@ StatsStack.navigationOptions = {
       name={
         Platform.OS === 'ios'
           ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'
+          : 'md-stats'
       }
     />
   ),
@@ -152,8 +152,8 @@ const opts = {
 export default createBottomTabNavigator(
   {
     // PARENT
-    // BudgetStack,
-    // TransactionStack,
+    BudgetStack,
+    TransactionStack,
     StatsStack,
 
     // SettingsStack,

@@ -1,37 +1,47 @@
 import React, { Component } from 'react';
-import { View, Text, Button } from 'react-native';
+import { View, Text, Button, Picker } from 'react-native';
 import { Constants } from 'expo';
-import Header from '../components/Header';
 import Colors from '../constants/Colors';
+const childs = [{ name: 'Jelena' }, { name: 'Dejan' }];
 
 class BudgetScreen extends Component {
-  static navigationOptions = ({ navigation }) => {
-    const {
-      state: { params = {} },
-    } = navigation;
-    return params;
+  static navigationOptions = {
+    header: null,
   };
-
-  componentDidMount() {
-    this.props.navigation.setParams({
-      headerTitle: <Header onChangeChild={() => this.onChange()} />,
-    });
-    console.log(this.props.navigation.state.params);
-  }
 
   state = {
     budgetBalance: 78,
+    selected: 'Jelena',
     transfer: 78,
   };
 
-  onChange = () => {
-    this.setState(() => ({ budgetBalance: 50, transfer: 65 }));
+  onChange = val => {
+    this.setState(() => ({ budgetBalance: 50, transfer: 65, selected: val }));
   };
 
   render() {
-    const { budgetBalance, transfer } = this.state;
+    const { budgetBalance, transfer, selected } = this.state;
     return (
       <View style={{ flex: 1, backgroundColor: Colors.bgColor }}>
+        <View
+          style={{
+            marginLeft: 20,
+          }}
+        >
+          <Picker
+            style={{ height: 50, width: 150 }}
+            onValueChange={this.onChange}
+            selectedValue={selected}
+          >
+            {childs.map(child => (
+              <Picker.Item
+                label={child.name}
+                key={child.name}
+                value={child.name}
+              />
+            ))}
+          </Picker>
+        </View>
         <View style={{ flex: 1, padding: 30 }}>
           <Text
             style={{

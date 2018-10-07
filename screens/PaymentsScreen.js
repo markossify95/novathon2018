@@ -7,7 +7,6 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-import Header from '../components/Header';
 import { Constants } from 'expo';
 import Colors from '../constants/Colors';
 
@@ -104,7 +103,7 @@ class PaymentsScreen extends Component {
   };
 
   static navigationOptions = {
-    headerTitle: <Header />,
+    header: null,
   };
 
   render() {

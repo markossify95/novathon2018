@@ -6,6 +6,7 @@ import {
   BackHandler,
   Text,
   ActivityIndicator,
+  ImageBackground,
 } from 'react-native';
 import { Constants } from 'expo';
 
@@ -16,9 +17,13 @@ import Layout from '../constants/Layout';
 export default class HomeScreen extends React.Component {
   state = {
     scannerActive: false,
-    titleText: 'Balance for this Week/Month: \n\t\t72.8 / 100',
     isPaying: false,
-    data: null
+    paid: false,
+    data: null,
+  };
+
+  static navigationOptions = {
+    header: null,
   };
 
   _toggleScannerActive = () => {
@@ -29,11 +34,14 @@ export default class HomeScreen extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        {this.state.isPaying === true ?
-          (<ActivityIndicator size="large" color="#0000ff" />) : null
-        }
-        {this.state.scannerActive === true ? (
+      <ImageBackground
+        source={require('../assets/images/photo_2018-10-07_09-33-42.jpg')}
+        style={styles.container}
+      >
+        {this.state.isPaying === true ? (
+          <ActivityIndicator size="large" color="#0000ff" />
+        ) : null}
+        {this.state.scannerActive && !this.state.isPaying ? (
           <View style={{ position: 'relative' }}>
             <View
               style={{
@@ -56,21 +64,29 @@ export default class HomeScreen extends React.Component {
               size={40}
             />
           </View>
+        ) : this.state.scannerActive && this.state.isPaying ? (
+          <View>
+            <Text style={{ color: '#fff', fontSize: 20, textAlign: 'center' }}>
+              Balance for this Week/Month:
+            </Text>
+            <Text style={{ color: '#fff', fontSize: 20, textAlign: 'center' }}>
+              72.8 / 100
+            </Text>
+          </View>
         ) : (
-            <View>
-              <Text>
-                {'\n'}
-                {'\n'}
-                {'\n\t\t'}
-                {this.state.titleText}
-                {'\n'}
-              </Text>
-              <View style={styles.ScanButton}>
-                <Button onPress={this._toggleScannerActive} title="Scan to pay" />
-              </View>
+          <View>
+            <Text style={{ color: '#fff', fontSize: 20, textAlign: 'center' }}>
+              Balance for this Week/Month:
+            </Text>
+            <Text style={{ color: '#fff', fontSize: 20, textAlign: 'center' }}>
+              72.8 / 100
+            </Text>
+            <View style={styles.ScanButton}>
+              <Button onPress={this._toggleScannerActive} title="Scan to pay" />
             </View>
-          )}
-      </View>
+          </View>
+        )}
+      </ImageBackground>
     );
   }
 
@@ -92,36 +108,37 @@ export default class HomeScreen extends React.Component {
   };
 
   _stopPaying = () => {
-    this.setState(
-      () => {
-        return {
-          isPaying: false
-        };
-      }
-    );
+    this.setState(() => {
+      return {
+        isPaying: false,
+      };
+    });
 
     alert(`Payment successful: \n ${this.state.data.data}`);
-  }
+  };
 
-  processPayment = (x) => {
-    this.setState(
-      () => {
-        return {
-          isPaying: true,
-          data: x
-        };
-      }
+  processPayment = x => {
+    this.setState(() => {
+      return {
+        isPaying: true,
+        data: x,
+      };
+    });
+    setTimeout(
+      this._stopPaying,
+      Math.floor(Math.max(1500, Math.random() * 3500)),
     );
-    setTimeout(this._stopPaying, Math.floor(Math.max(1500, Math.random() * 3500)));
-  }
+  };
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
+    paddingTop: 150,
   },
   ScanButton: {
-    paddingTop: 50,
+    alignSelf: 'center',
+    width: 200,
   },
 });

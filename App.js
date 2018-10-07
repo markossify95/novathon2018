@@ -18,15 +18,8 @@ export default class App extends React.Component {
     isLoadingComplete: false,
   };
   static navigationOptions = {
-    headerStyle: {
-      marginTop: Constants.statusBarHeight,
-      backgroundColor: Colors.fgColor,
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-    },
+    header: null,
+    headerStyle: { marginTop: Constants.marginTop },
   };
 
   render() {
@@ -40,6 +33,7 @@ export default class App extends React.Component {
       );
     } else {
       return (
+        // <View style={{ marginTop: 30 }}>
         <ImageBackground
           source={require('./assets/images/photo_2018-10-07_09-16-24.jpg')}
           style={styles.container}
@@ -48,6 +42,7 @@ export default class App extends React.Component {
 
           <AppNavigator />
         </ImageBackground>
+        // </View>
       );
     }
   }

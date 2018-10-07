@@ -1,15 +1,10 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
-import Header from '../components/Header';
 import Layout from '../constants/Layout';
 import PieChart from '../components/PieChart';
 import Colors from '../constants/Colors';
 
 class StatsScreen extends Component {
-  static navigationOptions = {
-    headerTitle: <Header />,
-  };
-
   state = {};
 
   data = {
@@ -21,6 +16,9 @@ class StatsScreen extends Component {
       { number: 42, name: 'books' },
       { number: 4, name: 'other' },
     ],
+  };
+  static navigationOptions = {
+    header: null,
   };
 
   constructor(props) {
