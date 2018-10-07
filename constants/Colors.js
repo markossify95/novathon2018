@@ -11,4 +11,7 @@ export default {
   warningText: '#666804',
   noticeBackground: tintColor,
   noticeText: '#fff',
+  bgColor: '#DCEDFF',
+  fgColor: '#343F3E',
+  // fgColor: '#DCEDFF',
 };

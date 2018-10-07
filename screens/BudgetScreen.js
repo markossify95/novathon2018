@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, Button } from 'react-native';
 import { Constants } from 'expo';
 import Header from '../components/Header';
+import Colors from '../constants/Colors';
 
 class BudgetScreen extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -30,24 +31,44 @@ class BudgetScreen extends Component {
   render() {
     const { budgetBalance, transfer } = this.state;
     return (
-      <View style={{ flex: 1 }}>
+      <View style={{ flex: 1, backgroundColor: Colors.bgColor }}>
         <View style={{ flex: 1, padding: 30 }}>
-          <Text style={{ fontWeight: '600', fontSize: 30, marginBottom: 20 }}>
-            Budget Balance
-          </Text>
-          <View
+          <Text
             style={{
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              alignItems: 'center',
+              fontWeight: '600',
+              fontSize: 30,
+              marginBottom: 20,
+              color: Colors.fgColor,
             }}
           >
-            <Text>{budgetBalance} &euro;</Text>
-            <Button title="Edit" onPress={() => {}} />
+            Budget Balance
+          </Text>
+          <View style={{}}>
+            <Text
+              style={{
+                color: Colors.fgColor,
+                fontSize: 50,
+                textAlign: 'center',
+              }}
+            >
+              {budgetBalance} &euro;
+            </Text>
+            <Button
+              style={{ float: 'right' }}
+              title="Edit"
+              onPress={() => {}}
+            />
           </View>
         </View>
         <View style={{ flex: 1.5, padding: 30 }}>
-          <Text style={{ fontWeight: '600', fontSize: 30, marginBottom: 20 }}>
+          <Text
+            style={{
+              fontWeight: '600',
+              fontSize: 30,
+              marginBottom: 20,
+              color: Colors.fgColor,
+            }}
+          >
             Next Scheduled transfer
           </Text>
           <View
@@ -57,14 +78,20 @@ class BudgetScreen extends Component {
               alignItems: 'center',
             }}
           >
-            <Text>11 oct: 1000</Text>
+            <Text style={{ color: Colors.fgColor, fontSize: 20 }}>
+              11 oct: 1000
+            </Text>
             <View
               style={{
                 flexDirection: 'row',
                 alignItems: 'center',
               }}
             >
-              <Text style={{ marginRight: 30 }}>{transfer} &euro;</Text>
+              <Text
+                style={{ marginRight: 30, color: Colors.fgColor, fontSize: 20 }}
+              >
+                {transfer} &euro;
+              </Text>
               <Button title="Edit" onPress={() => {}} />
             </View>
           </View>

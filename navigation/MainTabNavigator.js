@@ -144,19 +144,27 @@ StatsStack.navigationOptions = {
   ),
 };
 
-export default createBottomTabNavigator({
-  // PARENT
-  BudgetStack,
-  TransactionStack,
-  StatsStack,
+const opts = {
+  tintColor: '#8f9adc',
+  activeTintColor: '#8f9adc',
+};
 
-  SettingsStack,
+export default createBottomTabNavigator(
+  {
+    // PARENT
+    BudgetStack,
+    TransactionStack,
+    StatsStack,
 
-  // CHILDREN
-  // HomeStack,
-  // PaymentStack,
-  // GoalsStack,
-  // BudgetStack,
-  // TransactionStack,
-  // StatsStack,
-});
+    SettingsStack,
+
+    // CHILDREN
+    // HomeStack,
+    // PaymentStack,
+    // GoalsStack,
+    // BudgetStack,
+    // TransactionStack,
+    // StatsStack,
+  },
+  opts,
+);

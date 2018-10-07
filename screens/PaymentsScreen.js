@@ -7,7 +7,9 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
+import Header from '../components/Header';
 import { Constants } from 'expo';
+import Colors from '../constants/Colors';
 
 const categories = [
   { text: 'all', id: 0 },
@@ -101,14 +103,27 @@ class PaymentsScreen extends Component {
     selectedCategory: 0,
   };
 
+  static navigationOptions = {
+    headerTitle: <Header />,
+  };
+
   render() {
     const { selectedCategory } = this.state;
     const cats = mockData.filter(
       cat => selectedCategory === 0 || cat.category === selectedCategory,
     );
     return (
-      <View style={{ backgroundColor: '#fff', paddingTop: 10 }}>
-        <ScrollView horizontal style={{ marginLeft: 20 }}>
+      <View style={{ backgroundColor: Colors.bgColor }}>
+        <ScrollView
+          horizontal
+          style={{
+            marginLeft: 20,
+            padding: 10,
+            height: 70,
+            minHeight: 70,
+            maxHeight: 70,
+          }}
+        >
           {categories.map(({ text, id }) => (
             <TouchableOpacity
               style={{
@@ -125,7 +140,7 @@ class PaymentsScreen extends Component {
             </TouchableOpacity>
           ))}
         </ScrollView>
-        <ScrollView style={{ paddingTop: 20 }}>
+        <ScrollView style={{ paddingTop: 20, paddingBottom: 20 }}>
           {cats.map(({ date, itemBought, amount }) => (
             <View style={styles.paymentItem} key={date}>
               <Text style={{}}>{itemBought}</Text>
@@ -147,7 +162,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: 20,
-    backgroundColor: '#fff',
+    borderTopColor: '#ccc',
+    borderTopWidth: 1,
     marginBottom: MARGIN_BOTTOM,
   },
 });

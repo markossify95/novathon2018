@@ -11,7 +11,14 @@ class Header extends Component {
   render() {
     const { selected } = this.state;
     return (
-      <View>
+      <View
+        style={{
+          marginLeft: 20,
+          // flex: 1,
+          // flexDirection: 'row',
+          // padding: 0,
+        }}
+      >
         <Picker
           style={{ height: 50, width: 150 }}
           onValueChange={val => {

@@ -2,13 +2,22 @@ import React from 'react';
 import { Platform, StatusBar, StyleSheet, View, Text } from 'react-native';
 import { AppLoading, Asset, Font, Icon, Constants } from 'expo';
 import AppNavigator from './navigation/AppNavigator';
+import Colors from './constants/Colors';
 
 export default class App extends React.Component {
   state = {
     isLoadingComplete: false,
   };
   static navigationOptions = {
-    headerStyle: { marginTop: Constants.statusBarHeight },
+    headerStyle: {
+      marginTop: Constants.statusBarHeight,
+      backgroundColor: Colors.fgColor,
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+    },
   };
 
   render() {
@@ -23,7 +32,7 @@ export default class App extends React.Component {
     } else {
       return (
         <View style={styles.container}>
-          <StatusBar />
+          {/* <StatusBar animated barStyle="light-content" /> */}
 
           <AppNavigator />
         </View>
@@ -60,7 +69,7 @@ export default class App extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#fff',
+    backgroundColor: Colors.bgColor,
     flex: 1,
   },
 });
