@@ -1,31 +1,85 @@
 import React from 'react';
 import {
-  Image,
   Platform,
-  ScrollView,
   StyleSheet,
-  Text,
-  TouchableOpacity,
   View,
+  Button,
+  BackHandler,
+  Text,
 } from 'react-native';
-import { WebBrowser } from 'expo';
 
-import { MonoText } from '../components/StyledText';
+import { QrScanner } from '../components/QrScanner';
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
     header: null,
   };
 
-  render() {
-    return <View style={styles.container} />;
+  state = {
+    scannerActive: false,
+    titleText: "Balance for this Week/Month: \n\t\t72.8 / 100"
+  };
+
+  _toggleScannerActive = () => {
+    this.setState(
+      (previousState) => {
+        return { scannerActive: !previousState.scannerActive }
+      }
+    )
   }
+
+  render() {
+    return (
+      <View style={styles.container}>
+        {
+          this.state.scannerActive === true ?
+            <QrScanner /> :
+            <View>
+              <Text>
+                {"\n"}
+                {"\n"}
+                {"\n\t\t"}
+                {this.state.titleText}
+                {"\n"}
+              </Text>
+              <View
+                style={styles.ScanButton}>
+                <Button
+                  onPress={this._toggleScannerActive}
+                  title="Scan to pay"
+                />
+              </View>
+            </View>
+        }
+      </View>
+    );
+
+  }
+
+  componentDidMount() {
+    BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
+  }
+
+  componentWillUnmount() {
+    BackHandler.removeEventListener('hardwareBackPress', this.handleBackPress);
+  }
+
+  handleBackPress = () => {
+    if (this.state.scannerActive) {
+      this._toggleScannerActive();
+    }
+    return true;
+  }
+
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
+  },
+  ScanButton: {
+    paddingTop: 500,
   },
   developmentModeText: {
     marginBottom: 20,
