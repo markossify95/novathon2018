@@ -4,7 +4,8 @@ import {
   StyleSheet,
   View,
   Button,
-  BackHandler
+  BackHandler,
+  Text,
 } from 'react-native';
 
 import { QrScanner } from '../components/QrScanner';
@@ -16,6 +17,7 @@ export default class HomeScreen extends React.Component {
 
   state = {
     scannerActive: false,
+    titleText: "Balance for this Week/Month: \n\t\t72.8 / 100"
   };
 
   _toggleScannerActive = () => {
@@ -32,12 +34,21 @@ export default class HomeScreen extends React.Component {
         {
           this.state.scannerActive === true ?
             <QrScanner /> :
-            <View
-              style={styles.ScanButton}>
-              <Button
-                onPress={this._toggleScannerActive}
-                title="Learn More"
-              />
+            <View>
+              <Text>
+                {"\n"}
+                {"\n"}
+                {"\n\t\t"}
+                {this.state.titleText}
+                {"\n"}
+              </Text>
+              <View
+                style={styles.ScanButton}>
+                <Button
+                  onPress={this._toggleScannerActive}
+                  title="Scan to pay"
+                />
+              </View>
             </View>
         }
       </View>
