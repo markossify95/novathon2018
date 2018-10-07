@@ -10,13 +10,12 @@ class BudgetScreen extends Component {
   };
 
   state = {
-    budgetBalance: 78,
-    selected: 'Jelena',
-    transfer: 78,
+    budgetBalance: 102,
+    transfer: 150,
   };
 
-  onChange = val => {
-    this.setState(() => ({ budgetBalance: 50, transfer: 65, selected: val }));
+  onChange = () => {
+    this.setState(() => ({ budgetBalance: 77, transfer: 150, selected: val }));
   };
 
   render() {
@@ -85,15 +84,14 @@ class BudgetScreen extends Component {
             <Text
               style={{
                 color: Colors.fgColor,
-                fontSize: 20,
+                fontSize: 28,
                 textAlign: 'center',
               }}
             >
-              11 oct: 1000
+              12 Dec
             </Text>
             <Text
               style={{
-                marginRight: 30,
                 color: Colors.fgColor,
                 fontSize: 50,
                 textAlign: 'center',
