@@ -12,6 +12,8 @@ import SettingsScreen from '../screens/SettingsScreen';
 import GoalsScreen from '../screens/GoalsScreen';
 import PaymentsScreen from '../screens/PaymentsScreen';
 import BudgetScreen from '../screens/BudgetScreen';
+import BudgetManagementScreen from '../screens/BudgetManagementScreen';
+import StatsScreen from '../screens/StatsScreen';
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
@@ -68,7 +70,7 @@ PaymentStack.navigationOptions = {
 };
 
 const BudgetStack = createStackNavigator({
-  Butdget: BudgetScreen,
+  Budget: BudgetScreen,
 });
 
 BudgetStack.navigationOptions = {
@@ -85,9 +87,53 @@ BudgetStack.navigationOptions = {
   ),
 };
 
+const BudgetManagementStack = createStackNavigator({
+  BudgetMgmt: BudgetManagementScreen,
+});
+
+BudgetManagementStack.navigationOptions = {
+  tabBarLabel: 'Budget',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={
+        Platform.OS === 'ios'
+          ? `ios-information-circle${focused ? '' : '-outline'}`
+          : 'md-information-circle'
+      }
+    />
+  ),
+};
+
+const TransactionStack = PaymentStack;
+TransactionStack.navigationOptions.tabBarLabel = 'Transactions';
+
+const StatsStack = createStackNavigator({
+  Stats: StatsScreen,
+});
+
+StatsStack.navigationOptions = {
+  tabBarLabel: 'Stats',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={
+        Platform.OS === 'ios'
+          ? `ios-information-circle${focused ? '' : '-outline'}`
+          : 'md-information-circle'
+      }
+    />
+  ),
+};
+
 export default createBottomTabNavigator({
-  HomeStack,
-  PaymentStack,
-  GoalsStack,
+  // PARENT
   BudgetStack,
+  TransactionStack,
+  StatsStack,
+  // CHILDREN
+  // HomeStack,
+  // PaymentStack,
+  // GoalsStack,
+  // BudgetStack,
 });
