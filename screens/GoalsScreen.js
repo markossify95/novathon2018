@@ -25,9 +25,6 @@ const mockData = [
 const MARGIN_BOTTOM = 20;
 
 export default class GoalsScreen extends Component {
-  static navigationOptions = {
-    headerStyle: { marginTop: Constants.statusBarHeight },
-  };
   render() {
     return (
       <ScrollView style={{ paddingTop: 20, backgroundColor: '#fff' }}>
