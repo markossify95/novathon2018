@@ -128,28 +128,33 @@ class PaymentsScreen extends Component {
             <TouchableOpacity
               style={{
                 padding: 10,
-                backgroundColor: selectedCategory === id ? '#777' : '#eee',
-                borderRadius: 10,
+                backgroundColor:
+                  selectedCategory === id ? '#2745dc' : '#2f95dc',
+                borderRadius: 20,
                 marginRight: 10,
                 marginTop: 10,
+                // minWidth: 50,
               }}
               onPress={() => this.setState(() => ({ selectedCategory: id }))}
               key={id}
             >
-              <Text>{text}</Text>
+              <Text style={{ color: '#fff' }}>{text}</Text>
             </TouchableOpacity>
           ))}
         </ScrollView>
-        <ScrollView style={{ paddingTop: 20, paddingBottom: 20 }}>
+        <ScrollView style={{ paddingTop: 15, paddingBottom: 15 }}>
           {cats.map(({ date, itemBought, amount }) => (
             <View style={styles.paymentItem} key={date}>
               <Text style={{}}>{itemBought}</Text>
               <Text style={{}}>
-                {date} - {amount} &euro;
+                {date} -{' '}
+                <Text style={{ fontWeight: '600', color: '#f55' }}>
+                  {amount} &euro;
+                </Text>
               </Text>
             </View>
           ))}
-          <View style={{ height: MARGIN_BOTTOM }} />
+          <View style={{ minHeight: MARGIN_BOTTOM, flex: 1 }} />
         </ScrollView>
       </View>
     );
@@ -161,7 +166,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: 20,
+    padding: 15,
     borderTopColor: '#ccc',
     borderTopWidth: 1,
     marginBottom: MARGIN_BOTTOM,

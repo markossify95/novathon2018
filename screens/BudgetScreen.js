@@ -39,6 +39,7 @@ class BudgetScreen extends Component {
               fontSize: 30,
               marginBottom: 20,
               color: Colors.fgColor,
+              textAlign: 'center',
             }}
           >
             Budget Balance
@@ -53,11 +54,9 @@ class BudgetScreen extends Component {
             >
               {budgetBalance} &euro;
             </Text>
-            <Button
-              style={{ float: 'right' }}
-              title="Edit"
-              onPress={() => {}}
-            />
+            <View style={{ width: 100, alignSelf: 'center' }}>
+              <Button title="Update" onPress={() => {}} />
+            </View>
           </View>
         </View>
         <View style={{ flex: 1.5, padding: 30 }}>
@@ -67,32 +66,33 @@ class BudgetScreen extends Component {
               fontSize: 30,
               marginBottom: 20,
               color: Colors.fgColor,
+              textAlign: 'center',
             }}
           >
             Next Scheduled transfer
           </Text>
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-            }}
-          >
-            <Text style={{ color: Colors.fgColor, fontSize: 20 }}>
-              11 oct: 1000
-            </Text>
-            <View
+          <View style={{}}>
+            <Text
               style={{
-                flexDirection: 'row',
-                alignItems: 'center',
+                color: Colors.fgColor,
+                fontSize: 20,
+                textAlign: 'center',
               }}
             >
-              <Text
-                style={{ marginRight: 30, color: Colors.fgColor, fontSize: 20 }}
-              >
-                {transfer} &euro;
-              </Text>
-              <Button title="Edit" onPress={() => {}} />
+              11 oct: 1000
+            </Text>
+            <Text
+              style={{
+                marginRight: 30,
+                color: Colors.fgColor,
+                fontSize: 50,
+                textAlign: 'center',
+              }}
+            >
+              {transfer} &euro;
+            </Text>
+            <View style={{ width: 100, alignSelf: 'center' }}>
+              <Button title="Update" onPress={() => {}} />
             </View>
           </View>
         </View>

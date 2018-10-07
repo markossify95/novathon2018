@@ -1,8 +1,17 @@
 import React from 'react';
-import { Platform, StatusBar, StyleSheet, View, Text } from 'react-native';
+import {
+  Platform,
+  StatusBar,
+  StyleSheet,
+  View,
+  Text,
+  ImageBackground,
+} from 'react-native';
 import { AppLoading, Asset, Font, Icon, Constants } from 'expo';
 import AppNavigator from './navigation/AppNavigator';
 import Colors from './constants/Colors';
+
+// import img from './assets/images/photo_2018-10-07_09-16-24.jpg';
 
 export default class App extends React.Component {
   state = {
@@ -31,11 +40,14 @@ export default class App extends React.Component {
       );
     } else {
       return (
-        <View style={styles.container}>
+        <ImageBackground
+          source={require('./assets/images/photo_2018-10-07_09-16-24.jpg')}
+          style={styles.container}
+        >
           {/* <StatusBar animated barStyle="light-content" /> */}
 
           <AppNavigator />
-        </View>
+        </ImageBackground>
       );
     }
   }
@@ -71,5 +83,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: Colors.bgColor,
     flex: 1,
+    width: '100%',
+    height: '100%',
   },
 });

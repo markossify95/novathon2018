@@ -160,10 +160,11 @@ export default createBottomTabNavigator(
 
     // CHILDREN
     HomeStack,
-    PaymentStack,
-    GoalsStack,
-    BudgetStack,
-    TransactionStack,
+    // PaymentStack,
+    // GoalsStack,
+    // BudgetStack,
+    // TransactionStack,
+    // StatsStack,
   },
   opts,
 );
