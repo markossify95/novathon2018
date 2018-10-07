@@ -152,19 +152,18 @@ const opts = {
 export default createBottomTabNavigator(
   {
     // PARENT
-    BudgetStack,
-    TransactionStack,
-    StatsStack,
-
-    SettingsStack,
-
-    // CHILDREN
-    // HomeStack,
-    // PaymentStack,
-    // GoalsStack,
     // BudgetStack,
     // TransactionStack,
-    // StatsStack,
+    StatsStack,
+
+    // SettingsStack,
+
+    // CHILDREN
+    HomeStack,
+    PaymentStack,
+    GoalsStack,
+    BudgetStack,
+    TransactionStack,
   },
   opts,
 );

@@ -58,8 +58,8 @@ class StatsScreen extends Component {
           Distribution of spending this month
         </Text>
         <PieChart
-          pieWidth={150}
-          pieHeight={150}
+          pieWidth={200}
+          pieHeight={200}
           onItemSelected={this._onPieItemSelected}
           colors={[
             '#1f77b4',
@@ -90,13 +90,11 @@ const styles = StyleSheet.create({
     padding: 36,
   },
   chart_title: {
-    paddingTop: 15,
+    paddingTop: 5,
     textAlign: 'center',
     paddingBottom: 5,
     paddingLeft: 5,
-    fontSize: 18,
-    backgroundColor: 'white',
-    color: 'grey',
+    fontSize: 24,
     fontWeight: 'bold',
   },
 });
