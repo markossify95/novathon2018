@@ -159,7 +159,7 @@ export default createBottomTabNavigator(
     SettingsStack,
 
     // CHILDREN
-    // HomeStack,
+    HomeStack,
     // PaymentStack,
     // GoalsStack,
     // BudgetStack,
