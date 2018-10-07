@@ -132,7 +132,7 @@ class PaymentsScreen extends Component {
                   selectedCategory === id ? '#2745dc' : '#2f95dc',
                 borderRadius: 20,
                 marginRight: 10,
-                marginTop: 10,
+                marginTop: 7,
                 // minWidth: 50,
               }}
               onPress={() => this.setState(() => ({ selectedCategory: id }))}
@@ -166,7 +166,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: 15,
+    padding: 10,
     borderTopColor: '#ccc',
     borderTopWidth: 1,
     marginBottom: MARGIN_BOTTOM,
