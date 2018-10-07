@@ -33,6 +33,24 @@ HomeStack.navigationOptions = {
   ),
 };
 
+const SettingsStack = createStackNavigator({
+  Settings: SettingsScreen,
+});
+
+SettingsStack.navigationOptions = {
+  tabBarLabel: 'Settings',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={
+        Platform.OS === 'ios'
+          ? `ios-information-circle${focused ? '' : '-outline'}`
+          : 'md-home'
+      }
+    />
+  ),
+};
+
 const GoalsStack = createStackNavigator({
   Goals: GoalsScreen,
 });
@@ -131,7 +149,7 @@ export default createBottomTabNavigator({
   BudgetStack,
   TransactionStack,
   StatsStack,
-  
+
   // CHILDREN
   // HomeStack,
   // PaymentStack,

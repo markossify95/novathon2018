@@ -14,10 +14,6 @@ import Icon from 'expo/src/Icon';
 import Layout from '../constants/Layout';
 
 export default class HomeScreen extends React.Component {
-  static navigationOptions = {
-    headerStyle: { marginTop: Constants.statusBarHeight },
-  };
-
   state = {
     scannerActive: false,
     titleText: 'Balance for this Week/Month: \n\t\t72.8 / 100',
