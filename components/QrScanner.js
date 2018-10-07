@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Platform, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { Button, Platform, StyleSheet, Text, View, TouchableOpacity, Alert } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 import { Permissions } from 'expo-permissions';
 
@@ -8,6 +8,10 @@ export class QrScanner extends React.Component {
         hasPermissionsGranted: null,
         type: BarCodeScanner.Constants.Type.back,
     };
+
+    constructor(props) {
+        super(props);
+    }
 
     async componentDidMount() {
         let { status } = await Permissions.askAsync(Permissions.CAMERA);
@@ -25,7 +29,31 @@ export class QrScanner extends React.Component {
         return (
             <View style={{ flex: 1 }}>
                 <BarCodeScanner
-                    onBarCodeScanned={data => alert(JSON.stringify(data))}
+                    onBarCodeScanned={data =>
+                        Alert.alert(
+                            'Payment confirmation',
+                            data.data,
+                            [
+                                {
+                                    text: 'Cancel',
+                                    onPress: () => {
+                                        this.props.cancelMethod();
+                                    },
+                                    style: 'cancel'
+                                },
+
+                                {
+                                    text: 'OK',
+                                    onPress: () => {
+                                        this.props.cancelMethod();
+                                        this.props.processPaymentMethod(data);
+                                    }
+                                },
+
+                            ],
+                            { cancelable: false }
+                        )
+                    }
                     barCodeTypes={[
                         BarCodeScanner.Constants.BarCodeType.qr,
                         BarCodeScanner.Constants.BarCodeType.pdf417,
